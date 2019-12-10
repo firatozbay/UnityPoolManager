@@ -1,7 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
+using PoolSystem;
 
 // You don't need this class for PoolManager to work
 // It's just an example for Spawning a Pooled Object

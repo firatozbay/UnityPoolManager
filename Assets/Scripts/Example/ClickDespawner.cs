@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using PoolSystem;
 
 // You don't need this class for PoolManager to work
 // It's just an example for despawning a Pooled Object

@@ -1,14 +1,40 @@
 ﻿using UnityEngine;
 
-public class Poolee : MonoBehaviour
+namespace PoolSystem
 {
-
-    public PoolType PoolType { get; private set; }
-    public int Key { get; private set; }
-
-    public void Init(PoolType poolType, int key)
+    public class Poolee : MonoBehaviour
     {
-        PoolType = poolType;
-        Key = key;
+        public PoolType PoolType { get; private set; }
+        public int Key { get; private set; }
+
+        private ISpawnable[] _spawnables;
+        private IDespawnable[] _despawnables;
+
+        public void Init(PoolType poolType, int key)
+        {
+            PoolType = poolType;
+            Key = key;
+            _spawnables = GetComponentsInChildren<ISpawnable>();
+            _despawnables = GetComponentsInChildren<IDespawnable>();
+        }
+
+        public void Spawn()
+        {
+            foreach (var spawnable in _spawnables)
+            {
+                spawnable.OnSpawn();
+            }
+            gameObject.SetActive(true);
+
+        }
+
+        public void Despawn()
+        {
+            foreach (var despawnable in _despawnables)
+            {
+                despawnable.OnDespawn();
+            }
+            gameObject.SetActive(false);
+        }
     }
 }
